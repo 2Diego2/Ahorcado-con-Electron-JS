@@ -1,0 +1,21 @@
+# Ignorar node_modules (las dependencias se instalan con npm)
+node_modules/
+
+# Ignorar archivos de configuración de editores de código
+.vscode/
+
+# Ignorar archivos de sistema generados por macOS
+.DS_Store
+
+# Ignorar archivos de sistema generados por Windows
+Thumbs.db
+
+# Ignorar archivos de log
+*.log
+
+# Ignorar carpetas temporales o compiladas
+dist/
+build/
+
+# Ignorar dependencias de test o paquetes temporales
+*.tgz
