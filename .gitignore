@@ -19,3 +19,5 @@ build/
 
 # Ignorar dependencias de test o paquetes temporales
 *.tgz
+
+node_modules/electron/dist/electron.exe
