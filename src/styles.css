@@ -25,6 +25,7 @@ main{
 }
 #palabra_a_adivinar{
     height: 3em;
+    
 }
 #palabra_a_adivinar span{
     vertical-align: bottom;
