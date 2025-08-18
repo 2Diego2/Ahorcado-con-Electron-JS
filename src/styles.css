@@ -24,8 +24,7 @@ main{
     gap: 30px;
 }
 #palabra_a_adivinar{
-    height: 3em;
-    
+    height: 3em;  
 }
 #palabra_a_adivinar span{
     vertical-align: bottom;
