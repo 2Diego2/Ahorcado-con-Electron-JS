@@ -1,113 +1,113 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
-const path = require('path');
-const fs = require('fs').promises;
+const { app, BrowserWindow, ipcMain } = require("electron")
+const path = require("path")
+const fs = require("fs").promises
 
-// Obtener la ruta del archivo donde se guardan los datos del juego
-function getDatosFilePath() {
-  return path.join(app.getPath('userData'), 'ahorcado_datos.json');
+let mainWindow
+let gestorWindow
+
+// Ruta al archivo de datos
+const DATOS_PATH = path.join(__dirname, "src", "data", "palabras.json")
+
+function createWindow() {
+  mainWindow = new BrowserWindow({
+    width: 1200,
+    height: 800,
+    webPreferences: {
+      nodeIntegration: false,
+      contextIsolation: true,
+      preload: path.join(__dirname, "src", "js", "preload.js"),
+    },
+  })
+
+  mainWindow.loadFile("src/index.html")
 }
 
-// Obtener la ruta del archivo de las palabras (palabras.json)
-function getPalabrasFilePath() {
-  return path.join(__dirname, 'src', 'data', 'palabras.json');
+function createGestorWindow() {
+  if (gestorWindow) {
+    gestorWindow.focus()
+    return
+  }
+
+  gestorWindow = new BrowserWindow({
+    width: 800,
+    height: 600,
+    parent: mainWindow,
+    modal: true,
+    webPreferences: {
+      nodeIntegration: false,
+      contextIsolation: true,
+      preload: path.join(__dirname, "src", "js", "preload.js"),
+    },
+  })
+
+  gestorWindow.loadFile("src/gestorPalabras.html")
+
+  gestorWindow.on("closed", () => {
+    gestorWindow = null
+  })
 }
-console.log('Ruta a palabras.json:', getPalabrasFilePath());
 
-
-
-/* IPC: leer / guardar datos */
-// Manejador para obtener las palabras desde palabras.json
-ipcMain.handle('leer-palabras', async () => {
+// Handler para leer datos
+ipcMain.handle("leer-palabras", async () => {
   try {
-    const file = getPalabrasFilePath();
-    try {
-      await fs.access(file); // Verificar si el archivo existe
-    } catch {
-      console.error("El archivo palabras.json no existe.");
-      return []; // Retorna un arreglo vacío si no se encuentra el archivo
+    console.log("Leyendo datos desde:", DATOS_PATH)
+    const data = await fs.readFile(DATOS_PATH, "utf8")
+    const parsedData = JSON.parse(data)
+
+    // Si es un array (formato original), convertir al formato esperado
+    if (Array.isArray(parsedData)) {
+      return {
+        palabras: parsedData,
+        estadisticas: { ganadas: 0, perdidas: 0 },
+      }
     }
 
-    const contenido = await fs.readFile(file, 'utf-8');
-    return JSON.parse(contenido); // Parseamos el contenido JSON
-  } catch (err) {
-    console.error('Error leyendo palabras desde palabras.json:', err);
-    return []; // Regresa un arreglo vacío como fallback
-  }
-});
-
-
-ipcMain.handle('guardar-datos', async (event, datos) => {
-  const rutaDatos = getDatosFilePath(); 
-  try {
-    // Usa fs.writeFile (promesa) en lugar de fs.writeFileSync
-    await fs.writeFile(rutaDatos, JSON.stringify(datos, null, 2));
-    return { success: true };
+    return parsedData
   } catch (error) {
-    console.error('Error al guardar datos:', error);
-    return { success: false, error: error.message };
-  }
-});
-
-
-
-/* ---- Abrir ventana gestor bajo demanda ---- */
-let winGestor = null;
-function crearVentanaGestor() {
-  if (winGestor && !winGestor.isDestroyed()) {
-    winGestor.focus();
-    return;
-  }
-
-  winGestor = new BrowserWindow({
-    width: 700,
-    height: 800,
-    webPreferences: {
-      preload: path.join(__dirname, 'src', 'js', 'preload.js'),
-      contextIsolation: true,
-      nodeIntegration: false
+    console.error("Error leyendo datos:", error)
+    // Retornar estructura por defecto si hay error
+    return {
+      palabras: [],
+      estadisticas: { ganadas: 0, perdidas: 0 },
     }
-  });
-
-  winGestor.loadFile(path.join(__dirname, 'src', 'gestorPalabras.html'));
-  winGestor.on('closed', () => { winGestor = null; });
-}
-
-ipcMain.handle('abrir-gestor', async () => {
-  if (!winGestor || winGestor.isDestroyed()) {
-    crearVentanaGestor();  // Crear nueva ventana si no existe o está destruida
-  } else {
-    winGestor.focus();  // Solo hacer foco si la ventana ya está abierta
   }
-  return true;
-});
+})
 
+// Handler para guardar datos
+ipcMain.handle("guardar-datos", async (event, datos) => {
+  try {
+    console.log("Guardando datos:", datos)
 
-/* ---- Ventana principal (index.html) ---- */
-let mainWin = null;
-function createMainWindow() {
-  mainWin = new BrowserWindow({
-    width: 1000,
-    height: 800,
-    webPreferences: {
-      preload: path.join(__dirname, 'src', 'js', 'preload.js'),
-      contextIsolation: true,
-      nodeIntegration: false
-    }
-  });
+    // Asegurar que el directorio existe
+    const dir = path.dirname(DATOS_PATH)
+    await fs.mkdir(dir, { recursive: true })
 
-  mainWin.loadFile(path.join(__dirname, 'src', 'index.html'));
-  mainWin.webContents.openDevTools(); // opcional para debug
-  mainWin.on('closed', () => { mainWin = null; });
-}
+    // Guardar los datos
+    await fs.writeFile(DATOS_PATH, JSON.stringify(datos, null, 2), "utf8")
+    console.log("Datos guardados exitosamente en:", DATOS_PATH)
 
-app.whenReady().then(() => {
-  createMainWindow();
+    return { success: true }
+  } catch (error) {
+    console.error("Error guardando datos:", error)
+    return { success: false, error: error.message }
+  }
+})
 
-  app.on('activate', () => {
-    if (BrowserWindow.getAllWindows().length === 0) createMainWindow();
-  });
-});
+// Handler para abrir ventana del gestor
+ipcMain.handle("abrir-gestor", () => {
+  createGestorWindow()
+})
 
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') app.quit();
-});
+app.whenReady().then(createWindow)
+
+app.on("window-all-closed", () => {
+  if (process.platform !== "darwin") {
+    app.quit()
+  }
+})
+
+app.on("activate", () => {
+  if (BrowserWindow.getAllWindows().length === 0) {
+    createWindow()
+  }
+})

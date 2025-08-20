@@ -1,166 +1,44 @@
-[
-  {
-    "palabra": "Manzana",
-    "pista": "Algo redondo que no cae lejos del árbol."
-  },
-  {
-    "palabra": "Coche",
-    "pista": "Viajo por caminos, pero no soy un tren."
-  },
-  {
-    "palabra": "Perro",
-    "pista": "Aunque no vuelo, soy el mejor amigo del hombre."
-  },
-  {
-    "palabra": "Computadora",
-    "pista": "Pienso más rápido que tú, pero no tengo cerebro."
-  },
-  {
-    "palabra": "Montaña",
-    "pista": "Subir hasta mí puede ser un reto, pero siempre tengo una vista clara."
-  },
-  {
-    "palabra": "Avión",
-    "pista": "Cruzo cielos y mares, pero mis alas no son de pájaro."
-  },
-  {
-    "palabra": "Pelota",
-    "pista": "Me lanzas y me persigues, pero no tengo pies."
-  },
-  {
-    "palabra": "Guitarra",
-    "pista": "Mis cuerdas vibran para contar historias sin palabras."
-  },
-  {
-    "palabra": "Elefante",
-    "pista": "Tengo una memoria increíble, pero mis pies no son ligeros."
-  },
-  {
-    "palabra": "Sol",
-    "pista": "Brillo cada día, pero nunca me acerco demasiado."
-  },
-  {
-    "palabra": "Libro",
-    "pista": "Mis páginas guardan más mundos de los que puedes imaginar."
-  },
-  {
-    "palabra": "Árbol",
-    "pista": "Mis raíces tocan la tierra, pero mis ramas acarician el cielo."
-  },
-  {
-    "palabra": "Espejo",
-    "pista": "Te reflejo tal como eres, pero no tengo ojos."
-  },
-  {
-    "palabra": "Cielo",
-    "pista": "Soy grande, pero nunca me tocas, solo me miras."
-  },
-  {
-    "palabra": "Reloj",
-    "pista": "Soy testigo del paso del tiempo, pero nunca me canso."
-  },
-  {
-    "palabra": "Luna",
-    "pista": "Aunque no habito en la tierra, todos los noches me encuentro allí."
-  },
-  {
-    "palabra": "Ojo",
-    "pista": "Soy la ventana al alma, pero no tengo mente."
-  },
-  {
-    "palabra": "Río",
-    "pista": "Fluyo y nunca me detengo, pero no tengo pies para caminar."
-  },
-  {
-    "palabra": "Puente",
-    "pista": "Conecto dos lugares, pero nunca tengo piernas."
-  },
-  {
-    "palabra": "Sombrero",
-    "pista": "Me pones en la cabeza, pero nunca tengo cerebro."
-  },
-  {
-    "palabra": "Zapato",
-    "pista": "Protejo tus pies, pero nunca camino solo."
-  },
-  {
-    "palabra": "Camión",
-    "pista": "Puedo cargar mucho peso, pero no tengo músculo."
-  },
-  {
-    "palabra": "Espejo",
-    "pista": "Te devuelvo lo que ves, pero nunca me muevo."
-  },
-  {
-    "palabra": "Café",
-    "pista": "Despierto tus sentidos, pero nunca grito."
-  },
-  {
-    "palabra": "Fuego",
-    "pista": "Puedo iluminar y calentar, pero soy peligroso si me tocas."
-  },
-  {
-    "palabra": "Nube",
-    "pista": "Me desplazo por el cielo sin tener alas, pero soy ligera."
-  },
-  {
-    "palabra": "Puerta",
-    "pista": "Abro y cierro caminos, pero nunca camino yo misma."
-  },
-  {
-    "palabra": "Bicicleta",
-    "pista": "Mis ruedas giran, pero no soy un coche."
-  },
-  {
-    "palabra": "Luz",
-    "pista": "No me tocas, pero siempre me ves."
-  },
-  {
-    "palabra": "Mariposa",
-    "pista": "Vuelo ligero, pero mi vida comienza como algo pequeño."
-  },
-  {
-    "palabra": "Cerveza",
-    "pista": "Soy burbujeante, pero no soy un refresco."
-  },
-  {
-    "palabra": "Silla",
-    "pista": "Me usas para descansar, pero nunca me muevo por voluntad propia."
-  },
-  {
-    "palabra": "Teclado",
-    "pista": "Con mis teclas, puedo escribir palabras, pero nunca hablo."
-  },
-  {
-    "palabra": "Lago",
-    "pista": "Soy tranquilo en la superficie, pero mis profundidades guardan secretos."
-  },
-  {
-    "palabra": "Lluvia",
-    "pista": "Cae del cielo sin cesar, pero nunca permanece en la tierra."
-  },
-  {
-    "palabra": "Tigre",
-    "pista": "Soy felino y feroz, pero mi pelaje es mi mayor misterio."
-  },
-  {
-    "palabra": "Cebra",
-    "pista": "Tengo rayas, pero no soy un código de barras."
-  },
-  {
-    "palabra": "Boca",
-    "pista": "Hablo sin decir una palabra, pero nunca miento."
-  },
-  {
-    "palabra": "Viento",
-    "pista": "No me ves, pero sientes mi presencia al moverte."
-  },
-  {
-    "palabra": "Piedra",
-    "pista": "Soy dura como una roca, pero no tengo corazón."
-  },
-  {
-    "palabra": "Estrella",
-    "pista": "Brillo de noche, pero nunca me tocas."
+{
+  "palabras": [
+    {
+      "palabra": "Mariposa",
+      "pista": "Vuelo ligero, pero mi vida comienza como algo pequeño."
+    },
+    {
+      "palabra": "Cerveza",
+      "pista": "Soy burbujeante, pero no soy un refresco."
+    },
+    {
+      "palabra": "Lago",
+      "pista": "Soy tranquilo en la superficie, pero mis profundidades guardan secretos."
+    },
+    {
+      "palabra": "Lluvia",
+      "pista": "Cae del cielo sin cesar, pero nunca permanece en la tierra."
+    },
+    {
+      "palabra": "Cebra",
+      "pista": "Tengo rayas, pero no soy un código de barras."
+    },
+    {
+      "palabra": "Boca",
+      "pista": "Hablo sin decir una palabra, pero nunca miento."
+    },
+    {
+      "palabra": "Viento",
+      "pista": "No me ves, pero sientes mi presencia al moverte."
+    },
+    {
+      "palabra": "Piedra",
+      "pista": "Soy dura como una roca, pero no tengo corazón."
+    },
+    {
+      "palabra": "sabalero",
+      "pista": ""
+    }
+  ],
+  "estadisticas": {
+    "ganadas": 0,
+    "perdidas": 0
   }
-] 
+}
