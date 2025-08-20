@@ -1,7 +1,10 @@
-// En preload.js
+// src/js/preload.js
 const { contextBridge, ipcRenderer } = require('electron');
 
+console.log('preload cargado (src/js/preload.js)');
+
 contextBridge.exposeInMainWorld('electronAPI', {
-    // La función que tu interfaz podrá llamar
-    leerDatos: () => ipcRenderer.invoke('leer-datos')
+  leerDatos: () => ipcRenderer.invoke('leer-palabras'),
+  guardarDatos: (datos) => ipcRenderer.invoke('guardar-datos', datos),
+  abrirGestor: () => ipcRenderer.invoke('abrir-gestor')
 });

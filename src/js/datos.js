@@ -1,19 +1,27 @@
-// En src/js/datos.js
+// src/js/datos.js
 
 export async function leerDatos() {
-    // Llama a la función expuesta en el preload.js
-    const datosJSON = await window.electronAPI.leerDatos();
-    let datos;
-
-    if (datosJSON) {
-        // Si el archivo existía, lo parseamos
-        datos = JSON.parse(datosJSON);
-    } else {
-        // Si no existía, creamos el objeto por defecto
-        datos = {
-            "palabras": [],
-            "estadisticas": { "ganadas": 0, "perdidas": 0 }
-        };
+  try {
+    const datosRecibidos = await window.electronAPI.leerDatos();
+    if (!datosRecibidos) {
+      return { palabras: [], estadisticas: { ganadas: 0, perdidas: 0 } };
     }
-    return datos;
+    if (typeof datosRecibidos === 'string') {
+      return JSON.parse(datosRecibidos);
+    }
+    return datosRecibidos;
+  } catch (err) {
+    console.error('Error en leerDatos:', err);
+    return { palabras: [], estadisticas: { ganadas: 0, perdidas: 0 } };
+  }
+}
+
+export async function guardarDatos(objDatos) {
+  try {
+    const respuesta = await window.electronAPI.guardarDatos(objDatos);
+    return respuesta === undefined ? true : Boolean(respuesta);
+  } catch (err) {
+    console.error('Error en guardarDatos:', err);
+    return false;
+  }
 }

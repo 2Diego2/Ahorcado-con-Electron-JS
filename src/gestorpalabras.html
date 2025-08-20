@@ -1,18 +1,34 @@
-<!--Ventana para añadir/editar/eliminar)-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestionar Palabras</title>
+    <style>
+        /* Estilos básicos para que se vea ordenado */
+        body { font-family: sans-serif; padding: 20px; }
+        input { padding: 8px; margin-right: 10px; }
+        button { padding: 8px; cursor: pointer; }
+        ul { list-style: none; padding: 0; }
+        li { display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #ccc; }
+        .botones-palabra button { margin-left: 10px; }
+    </style>
 </head>
 <body>
-<input type="text" id="fname" name="fname"><br><br>
-<button id="agregar-texto">Agregar</button>
-    
-    <ul id="listaPalabras"></ul>
-    <!-- Enlace al archivo gestorPalabras.js -->
-    <script src="gestorPalabras.js"></script>
-    
+
+    <h1>Gestionar Palabras</h1>
+    <button id="abrir-gestor-btn">Gestionar Palabras</button>
+
+
+    <div id="formulario-agregar">
+        <input type="text" id="nueva-palabra-input" placeholder="Escribe una nueva palabra...">
+        <button id="agregar-palabra-btn">Añadir</button>
+    </div>
+
+    <h2>Mis Palabras</h2>
+    <ul id="lista-palabras">
+        </ul>
+
+<script type="module" src="./js/gestorPalabras.js"></script>
 </body>
 </html>

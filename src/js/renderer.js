@@ -1,107 +1,124 @@
-//src/renderer.js
-window.onload = function (){
+// src/js/renderer.js
+
+// Función auxiliar para no escribir document.getElementById todo el tiempo
+function id(str) {
+  return document.getElementById(str);
+}
+
+// ---- LÓGICA DEL JUEGO ----
 let palabrita = '';
 let cant_errores = 0;
 let cant_aciertos = 0;
+let palabras_juego = []; // Array para guardar las palabras cargadas
 
-    const palabras = [
- 'manzana',
- 'caramelos',
- 'ñoquis'
-];
-const btn =document.getElementById('jugar');
+const btn_jugar = id('jugar');
 const imagen = id('imagen');
-const btn_letras= document.querySelectorAll("#letras button");
+const btn_letras = document.querySelectorAll("#letras button");
+const btn_gestor = id('abrir-gestor-btn'); // Botón para abrir el gestor
 
-/*click en iniciar juego y su respectiva funcion */
-btn.addEventListener('click', iniciar);
+// Carga inicial de datos cuando la ventana está lista
+window.onload = async function() {
+  try {
+    // ---- CORRECCIÓN CLAVE: Usar window.electronAPI ----
+    const datosCargados = await window.electronAPI.leerDatos();
 
-
-
-console.log (btn);
-
-
-
-function iniciar(event){
-    imagen.src = '../assets/images/Inicio.png';
-    btn.disabled = true; // para que no pueda apretar el boto mas de una vez..
-     cant_errores = 0;
- cant_aciertos = 0;
-    
-    const parrafo =id('palabra_a_adivinar');
-    parrafo.innerHTML = ''; // se limpia cada vez que se apreta el boton.
-
-      id('resultado').innerHTML = ''; // limpiamos el resultado de la partida ant.
-    const cant_palabras = palabras.length;
-    const valor_al_azar = obtener_random(0, cant_palabras);
-    palabrita = palabras [ valor_al_azar ];
-          console.log(palabrita);
-    
-    const cant_letras = palabrita.length;
-    for ( let i = 0; i < btn_letras.length; i++){
-    btn_letras[i].disabled = false;
-} 
-    for (let i = 0; i< cant_letras; i++){
-        const span = document.createElement('span');
-       parrafo.appendChild(span); // Lo que hace es cuando apreta obtener palabra, saca un valor al azar, 
-       // busca una palabra al azar, muestra la palabra en consola a adivinar y 
-       // crea un span por cada letra de la palabra a adivinar.
-
+    // Aseguramos que lo que recibimos sea un array de objetos con 'palabra'
+    if (Array.isArray(datosCargados) && datosCargados.length > 0) {
+      palabras_juego = datosCargados;
+    } else {
+      console.warn("No se cargaron palabras o el formato es incorrecto. Usando palabras por defecto.");
+      palabras_juego = [
+        { palabra: "manzana", pista: "Fruta que cae del árbol." },
+        { palabra: "electron", pista: "Framework para crear esta app." }
+      ];
     }
+  } catch (error) {
+    console.error("Error fatal al cargar las palabras:", error);
+  }
+
+  // Habilitamos el botón de jugar solo si tenemos palabras
+  if (palabras_juego.length > 0) {
+    btn_jugar.disabled = false;
+  }
+};
+
+// Listener para el botón de jugar
+btn_jugar.addEventListener('click', iniciar);
+
+// Listener para el botón de abrir gestor
+btn_gestor.addEventListener('click', () => {
+  window.electronAPI.abrirGestor();
+});
+
+
+function iniciar(event) {
+  imagen.src = '../assets/images/Inicio.png';
+  btn_jugar.disabled = true;
+  cant_errores = 0;
+  cant_aciertos = 0;
+
+  const parrafo = id('palabra_a_adivinar');
+  parrafo.innerHTML = '';
+
+  id('resultado').innerHTML = '';
+
+  // Seleccionar una palabra al azar del array cargado
+  const valor_al_azar = Math.floor(Math.random() * palabras_juego.length);
+  palabrita = palabras_juego[valor_al_azar].palabra.toLowerCase();
+  // const pista = palabras_juego[valor_al_azar].pista; // La pista no se usa, pero así se obtendría
+
+  for (let i = 0; i < btn_letras.length; i++) {
+    btn_letras[i].disabled = false;
+  }
+
+  for (let i = 0; i < palabrita.length; i++) {
+    const span = document.createElement('span');
+    parrafo.appendChild(span);
+  }
 }
-/*------*/
 
-/* click de adivinar letra y su funcion respectiva*/
-for ( let i = 0; i < btn_letras.length; i++){
-    btn_letras[i].addEventListener('click',click_letras);
+for (let i = 0; i < btn_letras.length; i++) {
+  btn_letras[i].addEventListener('click', click_letras);
 }
 
-function click_letras (event){
-    const spans = document.querySelectorAll('#palabra_a_adivinar span');
-    const button = event.target; //que boton apreto
-        button.disabled = true; // para que no pueda apretar la palabra mas de una vez..
-            
-        const letra = button.innerHTML.toLowerCase( );
-        const palabra = palabrita.toLowerCase( );
-        
-        let acerto = false;
-        for (let i = 0; i < palabra.length; i++){
-        if (letra == palabra[i]){
-            //la variable i es la psoicion de la letra en la palabra
-            //que coincide con el span al que tenemos que mostrarle esta letra.
-           spans[i].innerHTML = letra;
-           cant_aciertos++;
-            acerto = true;
-        } 
-        }
-        if (acerto == false){
-               cant_errores++;
-            const source = `../assets/images/Error${cant_errores}.png`;
-            const imagen = id('imagen');
-            imagen.src= source;
-        }
+function click_letras(event) {
+  const spans = document.querySelectorAll('#palabra_a_adivinar span');
+  const button = event.target;
+  button.disabled = true;
 
-        if (cant_errores == 7){
-            id('resultado').innerHTML ='¡Perdiste!, la palabra era: ' + palabrita;
-         game_over ( ); 
-        }else if(cant_aciertos == palabrita.length){
-               id('resultado').innerHTML ='¡Ganaste!';
-                 game_over ( ); 
+  const letra = button.innerHTML.toLowerCase();
+  let acerto = false;
 
-            }
-      //console.log("la letra" + letra + " en la palabra " + palabra + " ¿existe?: " + acerto);
+  for (let i = 0; i < palabrita.length; i++) {
+    if (letra == palabrita[i]) {
+      spans[i].innerHTML = letra;
+      cant_aciertos++;
+      acerto = true;
+    }
+  }
 
+  if (acerto == false) {
+    cant_errores++;
+    const source = `../assets/images/Error${cant_errores}.png`;
+    imagen.src = source;
+  }
+
+  if (cant_errores == 7) {
+    id('resultado').innerHTML = '¡Perdiste! La palabra era: ' + palabrita;
+    game_over();
+  } else if (cant_aciertos == palabrita.length) {
+    id('resultado').innerHTML = '¡Ganaste!';
+    game_over();
+  }
 }
-/*-------------------*/
 
-//Fin juego
-function game_over ( ){
-for ( let i = 0; i < btn_letras.length; i++){
+function game_over() {
+  for (let i = 0; i < btn_letras.length; i++) {
     btn_letras[i].disabled = true;
-}
-//Ya perdio o gano y puede volver a jugar
- btn.disabled = false;
+  }
+  btn_jugar.disabled = false;
 }
 
-game_over( ); //Para que no se pueda jugar al inicio, sin pedir una palabra.
-} 
+// Deshabilitar los botones al inicio hasta que se presione "Jugar"
+game_over();
+btn_jugar.disabled = true; // El botón se activará en window.onload si hay palabras
