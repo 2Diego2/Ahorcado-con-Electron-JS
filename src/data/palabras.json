@@ -1,7 +1,7 @@
 {
   "palabras": [
     {
-      "palabra": "Mariposa",
+      "palabra": "mariposa",
       "pista": "Vuelo ligero, pero mi vida comienza como algo pequeño."
     },
     {
@@ -39,6 +39,53 @@
   ],
   "estadisticas": {
     "ganadas": 0,
-    "perdidas": 0
-  }
+    "perdidas": 0,
+    "partidasJugadas": 2,
+    "tiempoTotalJugado": 30,
+    "partidasPerdidas": 2,
+    "porcentajeExito": null
+  },
+  "estadisticasPorPalabra": {
+    "cebra": {
+      "vecesJugada": 1,
+      "vecesGanada": 0,
+      "porcentajeExito": 0,
+      "promedioErrores": 7,
+      "tiempoPromedio": 11,
+      "totalErrores": 7,
+      "tiempoTotal": 11
+    },
+    "sabalero": {
+      "vecesJugada": 2,
+      "vecesGanada": 0,
+      "porcentajeExito": 0,
+      "promedioErrores": 7,
+      "tiempoPromedio": 15,
+      "totalErrores": 14,
+      "tiempoTotal": 30
+    }
+  },
+  "historial": [
+    {
+      "fecha": "2025-08-21T01:12:21.012Z",
+      "palabra": "sabalero",
+      "gano": false,
+      "errores": 7,
+      "tiempoJugado": 22
+    },
+    {
+      "fecha": "2025-08-21T01:11:56.834Z",
+      "palabra": "sabalero",
+      "gano": false,
+      "errores": 7,
+      "tiempoJugado": 8
+    },
+    {
+      "fecha": "2025-08-21T01:11:38.713Z",
+      "palabra": "cebra",
+      "gano": false,
+      "errores": 7,
+      "tiempoJugado": 11
+    }
+  ]
 }

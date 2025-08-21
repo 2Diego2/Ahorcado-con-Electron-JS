@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadísticas - Ahorcado</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .stats-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 10px;
+        }
+        
+        .stats-section {
+            margin-bottom: 30px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .stat-card {
+            padding: 15px;
+            background: #e8f4fd;
+            border-radius: 6px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #2563eb;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .word-stats-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        .word-stats-table th,
+        .word-stats-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .word-stats-table th {
+            background: #f8f9fa;
+            font-weight: bold;
+        }
+        
+        .historial-item {
+            padding: 10px;
+            margin: 5px 0;
+            background: #f8f9fa;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .resultado-ganado {
+            color: #16a34a;
+            font-weight: bold;
+        }
+        
+        .resultado-perdido {
+            color: #dc2626;
+            font-weight: bold;
+        }
+        
+        .btn-volver {
+            margin: 20px;
+            padding: 10px 20px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .btn-volver:hover {
+            background: #1d4ed8;
+        }
+    </style>
+</head>
+<body>
+    <div class="stats-container">
+        <h1>📊 Estadísticas del Juego</h1>
+        
+        <div class="stats-section">
+            <h2>Estadísticas Globales</h2>
+            <div class="stats-grid" id="estadisticas-globales">
+                <!-- Se llenarán dinámicamente -->
+            </div>
+        </div>
+        
+        <div class="stats-section">
+            <h2>Estadísticas por Palabra</h2>
+            <table class="word-stats-table" id="tabla-palabras">
+                <thead>
+                    <tr>
+                        <th>Palabra</th>
+                        <th>Jugadas</th>
+                        <th>Ganadas</th>
+                        <th>% Éxito</th>
+                        <th>Errores Promedio</th>
+                        <th>Tiempo Promedio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Se llenará dinámicamente -->
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="stats-section">
+            <h2>Historial Reciente</h2>
+            <div id="historial-partidas">
+            </div>
+        </div>
+        <button class="btn-volver" onclick="window.close()">Volver al Juego</button>
+    </div>
+    
+    <script type="module" src="js/estadisticas.js"></script>
+</body>
+</html>
