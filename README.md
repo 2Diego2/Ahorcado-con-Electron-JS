@@ -60,16 +60,18 @@ Una aplicación de escritorio multiplataforma que reinventa el clásico juego de
 ahorcado-interactivo/
 ├── assets/
 │   ├── images/          # Imágenes del juego (etapas del ahorcado)
-│   └── sounds/          # Efectos de sonido
+│  
 ├── js/
 │   ├── datos.js         # Gestión de datos y persistencia
+│   ├── renderer.js      # Donde se inicia el juego y funciona la logica.
 │   ├── funciones.js     # Funciones auxiliares
 │   ├── estadisticas.js  # Lógica de estadísticas
 │   ├── gestorPalabras.js # Gestión de palabras personalizadas
 │   └── preload.js       # Comunicación segura entre procesos
 ├── css/
-│   └── styles.css       # Estilos globales
+│   └── styles.css      # Estilos globales
 ├── index.html          # Pantalla de inicio
+├── data.html           # Informacion de como se juega
 ├── menu.html           # Menú principal
 ├── gestorpalabras.html # Gestor de palabras
 ├── estadisticas.html   # Pantalla de estadísticas
@@ -110,9 +112,6 @@ El proyecto cuenta con documentación exhaustiva:
 ### No se guardan las palabras o estadísticas
 - Asegúrate de tener permisos de escritura en el directorio de instalación
 - Verifica que las palabras solo contengan letras (sin números o símbolos)
-### Los sonidos no funcionan
-- Comprueba que el volumen de tu sistema esté activado
-- Verifica que no tengas silenciada la aplicación
 ## 📝 Licencia
 Este proyecto está bajo la Licencia MIT. Ver el archivo [LICENSE](LICENSE) para más detalles.
 ## 🤝 Contribuciones
@@ -124,8 +123,8 @@ Las contribuciones son bienvenidas. Por favor:
 5. Abre un Pull Request
 ## 📧 Contacto
 Para preguntas o sugerencias sobre el proyecto, puedes contactar a través de:
-- [Issues de GitHub](https://github.com/tu-usuario/ahorcado-interactivo/issues)
-- Email: tu-email@dominio.com
+- [Issues de GitHub](https://github.com/2Diego2/Ahorcado-con-Electron-JS/issues)
+- Email: diegoabelleyra74@gmail.com
 ---
 ¡Disfruta del Ahorcado Interactivo! 🎯
 ```
