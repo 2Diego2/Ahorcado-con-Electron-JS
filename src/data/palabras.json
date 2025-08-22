@@ -52,11 +52,11 @@
   "estadisticas": {
     "ganadas": 0,
     "perdidas": 0,
-    "partidasJugadas": 15,
-    "tiempoTotalJugado": 292,
+    "partidasJugadas": 16,
+    "tiempoTotalJugado": 318,
     "partidasPerdidas": 11,
-    "porcentajeExito": 20,
-    "partidasGanadas": 3
+    "porcentajeExito": 25,
+    "partidasGanadas": 4
   },
   "estadisticasPorPalabra": {
     "cebra": {
@@ -112,9 +112,25 @@
       "tiempoPromedio": 12,
       "totalErrores": 14,
       "tiempoTotal": 23
+    },
+    "viento": {
+      "vecesJugada": 1,
+      "vecesGanada": 1,
+      "porcentajeExito": 100,
+      "promedioErrores": 1,
+      "tiempoPromedio": 26,
+      "totalErrores": 1,
+      "tiempoTotal": 26
     }
   },
   "historial": [
+    {
+      "fecha": "2025-08-22T23:29:18.236Z",
+      "palabra": "viento",
+      "gano": true,
+      "errores": 1,
+      "tiempoJugado": 26
+    },
     {
       "fecha": "2025-08-22T06:12:07.113Z",
       "palabra": "piedra",
