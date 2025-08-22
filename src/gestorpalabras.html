@@ -3,32 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestionar Palabras</title>
-    <style>
-        /* Estilos básicos para que se vea ordenado */
-        body { font-family: sans-serif; padding: 20px; }
-        input { padding: 8px; margin-right: 10px; }
-        button { padding: 8px; cursor: pointer; }
-        ul { list-style: none; padding: 0; }
-        li { display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #ccc; }
-        .botones-palabra button { margin-left: 10px; }
-    </style>
+    <title>Gestionar Palabras - Ahorcado</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Gestionar Palabras</h1>
+            <p class="subtitle">Administra tu colección de palabras para el juego</p>
+            <a class="btn volver-juego" href="index.html" role="button">Volver al juego</a>
+        <a class="btn volver-menu" href="menu.html" role="button">Volver al Menu</a>
+        </header>
 
-    <h1>Gestionar Palabras</h1>
-    <button id="abrir-gestor-btn">Gestionar Palabras</button>
+        <main class="main-content">
+            <!-- Formulario moderno para agregar palabras -->
+            <section class="card">
+                <h2 class="section-title">Agregar Nueva Palabra</h2>
+                <div class="form-group">
+                    <div class="input-group">
+                        <!-- Manteniendo el ID original que busca el JavaScript -->
+                        <input 
+                            type="text" 
+                            id="nueva-palabra-input" 
+                            class="input-field"
+                            placeholder="Escribe una nueva palabra..."
+                            maxlength="20"
+                        >
+                    </div>
+                    <!-- Manteniendo el ID original que busca el JavaScript -->
+                    <button id="agregar-palabra-btn" class="btn btn-primary">
+                        <span class="btn-text">Agregar Palabra</span>
+                    </button>
+                </div>
+            </section>
 
+            <!-- Lista moderna de palabras con acciones -->
+            <section class="card">
+                <div class="section-header">
+                    <h2 class="section-title">Mis Palabras</h2>
+                </div>
 
-    <div id="formulario-agregar">
-        <input type="text" id="nueva-palabra-input" placeholder="Escribe una nueva palabra...">
-        <button id="agregar-palabra-btn">Añadir</button>
+                <ul id="lista-palabras" class="word-list">
+                    <!-- Las palabras se cargarán dinámicamente -->
+                </ul>
+
+                <div id="mensaje-vacio" class="empty-state" style="display: none;">
+                    <p>No hay palabras agregadas aún</p>
+                    <p class="empty-subtitle">Agrega tu primera palabra usando el formulario de arriba</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Notificaciones toast -->
+        <div id="toast-container" class="toast-container"></div>
     </div>
 
-    <h2>Mis Palabras</h2>
-    <ul id="lista-palabras">
-        </ul>
-
-<script type="module" src="./js/gestorPalabras.js"></script>
+    <script src="js/gestorPalabras.js"></script>
 </body>
 </html>

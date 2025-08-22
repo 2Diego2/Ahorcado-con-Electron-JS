@@ -1,5 +1,3 @@
-// src/js/datos.js
-
 export async function leerDatos() {
   try {
     const datosRecibidos = await window.electronAPI.leerDatos()
@@ -32,7 +30,7 @@ export async function guardarDatos(objDatos) {
 export async function obtenerEstadisticas() {
   try {
     const datos = await leerDatos()
-    console.log("[v0] Datos obtenidos para estadísticas:", datos)
+    console.log("Datos obtenidos para estadísticas:", datos)
 
     // Estructura de estadísticas con valores por defecto
     const estadisticasDefault = {

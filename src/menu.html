@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Menú — Ahorcado</title>
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body>
+  <div class="container" role="main" aria-labelledby="menu-title">
+    <header class="game-header">
+      <h1 id="menu-title">¡Bienvenido al Ahorcado!</h1>
+      <p class="subtitle">Seleccione una opción para comenzar</p>
+    </header>
+    
+    <main class="main-menu">
+      <a class="btn btn-primary" href="index.html" role="button">Jugar</a>
+      <a class="btn btn-secondary" href="gestorpalabras.html" role="button">Gestionar palabras</a>
+      <a class="btn btn-info" href="estadisticas.html" role="button">Ver estadísticas</a>
+      <a class="btn btn-data" href="data.html" role="button">¿Como se juega?</a>
+      <button class="btn-salir" onclick="window.close()">Salir</button>       
+
+    </main>
+
+    <footer class="site-footer">
+  <a href="https://github.com/2Diego2/Ahorcado-con-Electron-JS" target="_blank" class="github-link">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub Logo" class="github-logo">
+    <small>© Ahorcado — 2Diego2</small>
+  </a>
+</footer>
+
+  </div>
+  
+  <script src="./js/renderer.js" defer></script>
+</body>
+</html>

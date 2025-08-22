@@ -1,62 +1,100 @@
-<!--src/index.html-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/styles.css" />
-    <title>Ahorcado</title>
+    <title>Ahorcado - Juego Interactivo</title>
 </head>
 <body>
-    <h1> Juego del ahorcado</h1>
-<!-- Enlazar renderer.js<-->
- <main>
-    <img id="imagen"  src="../assets/images/Inicio.png" alt="Imagen de Inicio" />
-    <div>
-        <p id="palabra_a_adivinar">
-            <span>_</span>
-            <span>_</span>
-            <span>_</span>
-            <span>_</span>
-        </p>
-<button id="abrir-gestor-btn">Gestionar palabras</button>
-<!-- Agregando botón para ver estadísticas -->
-<button id="ver-estadisticas-btn">Ver Estadísticas</button>
-        <button id="jugar">Obtener palabra</button>
-         <p id="resultado"></p>
-        <div id="letras">
-    <button>a</button>
-    <button>b</button>
-    <button>c</button>
-    <button>d</button>
-    <button>e</button>
-    <button>f</button>
-    <button>g</button>
-    <button>h</button>
-    <button>i</button>
-    <button>j</button>
-    <button>k</button>
-    <button>l</button>
-    <button>m</button>
-    <button>n</button>
-    <button>ñ</button>
-    <button>o</button>
-    <button>p</button>
-    <button>q</button>
-    <button>r</button>
-    <button>s</button>
-    <button>t</button>
-    <button>u</button>
-    <button>v</button>
-    <button>w</button>
-    <button>x</button>
-    <button>y</button>
-    <button>z</button>
+    <!-- Estructura HTML mejorada con contenedor principal y mejor semántica -->
+    <div class="container">
+        <header class="game-header">
+            <h1>Juego del Ahorcado</h1>
+            <div class="game-stats">
+                <span id="stats-display">¡Comienza a jugar!</span>
+            </div>
+        </header>
 
-    
-</div>
- </main>
- <script src="./js/renderer.js"></script>
-  
+        <main class="game-area">
+            <section class="hangman-display">
+                <div class="image-container">
+                    <img id="imagen" src="../assets/images/Inicio.png" alt="Estado del ahorcado" />
+                </div>
+            </section>
+
+            <section class="word-section">
+                <div id="palabra_a_adivinar" class="word-display">
+                    <span>_</span>
+                    <span>_</span>
+                    <span>_</span>
+                    <span>_</span>
+                </div>
+                <div id="pista-container" class="hint-container">
+                    <p id="pista-texto"></p>
+                </div>
+            </section>
+
+            <section class="controls-section">
+                <div class="main-controls">
+                    <button id="jugar" class="btn btn-primary">Obtener una palabra</button>
+                    <a class="btn btn-secondary" href="gestorpalabras.html" role="button">Gestionar palabras</a>
+                    <a class="btn btn-info" href="estadisticas.html" role="button">Ver estadísticas</a>
+                    <a class="btn volver-menu" href="menu.html" role="button">Menu</a>
+
+                    <button class="btn-salir" onclick="window.close()">Salir</button>       
+
+                </div>
+                
+                <div id="resultado" class="result-display"></div>
+            </section>
+
+            <section class="letters-section">
+                <div id="letras" class="letters-grid">
+                    <!-- Letras organizadas alfabéticamente con mejor estructura -->
+                    <button data-letra="a">A</button>
+                    <button data-letra="b">B</button>
+                    <button data-letra="c">C</button>
+                    <button data-letra="d">D</button>
+                    <button data-letra="e">E</button>
+                    <button data-letra="f">F</button>
+                    <button data-letra="g">G</button>
+                    <button data-letra="h">H</button>
+                    <button data-letra="i">I</button>
+                    <button data-letra="j">J</button>
+                    <button data-letra="k">K</button>
+                    <button data-letra="l">L</button>
+                    <button data-letra="m">M</button>
+                    <button data-letra="n">N</button>
+                    <button data-letra="ñ">Ñ</button>
+                    <button data-letra="o">O</button>
+                    <button data-letra="p">P</button>
+                    <button data-letra="q">Q</button>
+                    <button data-letra="r">R</button>
+                    <button data-letra="s">S</button>
+                    <button data-letra="t">T</button>
+                    <button data-letra="u">U</button>
+                    <button data-letra="v">V</button>
+                    <button data-letra="w">W</button>
+                    <button data-letra="x">X</button>
+                    <button data-letra="y">Y</button>
+                    <button data-letra="z">Z</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="game-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-icon">
+                <span id="modal-emoji"></span>
+            </div>
+            <h2 id="modal-title"></h2>
+            <p id="modal-message"></p>
+            <button id="modal-btn" class="btn btn-modal">Continuar</button>
+        </div>
+    </div>
+
+    <script src="./js/renderer.js"></script>
 </body>
 </html>

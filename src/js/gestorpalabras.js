@@ -19,11 +19,9 @@ if (btn) {
     if (window.electronAPI && window.electronAPI.abrirGestor) {
       await window.electronAPI.abrirGestor()
     } else {
-      console.warn("Función de abrir gestor no disponible.")
+      alert("Función de abrir gestor no disponible.")
     }
   })
-} else {
-  console.log("Botón abrir-gestor-btn no encontrado en gestorPalabras.js (esto es normal)")
 }
 
 // ---- CAMBIO 1: La función ahora recibe un objeto de palabra ----
@@ -150,75 +148,31 @@ function agregarPalabra() {
 
 // Llama a las funciones del preload para guardar y luego renderiza
 async function guardarYRenderizar() {
-  try {
-    if (!window.electronAPI || !window.electronAPI.guardarDatos) {
-      console.error("electronAPI.guardarDatos no disponible")
-      alert("Error: No se puede guardar. electronAPI no disponible.")
-      return
-    }
-
-    const resultado = await window.electronAPI.guardarDatos(datosJuego)
-    console.log("Resultado del guardado:", resultado)
-
-    if (!resultado || !resultado.success) {
-      alert("Error guardando los datos. Revisa la consola.")
-      console.error("Error en guardado:", resultado?.error || "Respuesta inválida")
-    } else {
-      console.log("Datos guardados exitosamente")
-    }
-  } catch (error) {
-    console.error("Error al guardar:", error)
+  // Corregido para usar la API del preload
+  const resultado = await window.electronAPI.guardarDatos(datosJuego)
+  if (!resultado.success) {
     alert("Error guardando los datos. Revisa la consola.")
   }
-
   renderizarLista()
 }
 
 // Carga los datos iniciales usando la API del preload
 async function cargarDatosIniciales() {
-  try {
-    if (!window.electronAPI || !window.electronAPI.leerDatos) {
-      console.error("electronAPI.leerDatos no disponible")
-      // Usar datos por defecto
-      datosJuego = {
-        palabras: [],
-        estadisticas: { ganadas: 0, perdidas: 0 },
-      }
-      renderizarLista()
-      return
+  // Corregido para usar la API del preload
+  const datos = await window.electronAPI.leerDatos()
+  if (datos) {
+    // Si los datos son un array (como en tu palabras.json inicial),
+    // los convertimos al formato que usa la aplicación.
+    if (Array.isArray(datos)) {
+      datosJuego.palabras = datos
+    } else {
+      datosJuego = datos
     }
-
-    const datos = await window.electronAPI.leerDatos()
-    console.log("Datos cargados:", datos)
-
-    if (datos) {
-      // Asegurar que tenemos la estructura correcta
-      if (datos.palabras && Array.isArray(datos.palabras)) {
-        datosJuego = datos
-      } else if (Array.isArray(datos)) {
-        // Si recibimos un array directamente, convertir al formato esperado
-        datosJuego = {
-          palabras: datos,
-          estadisticas: { ganadas: 0, perdidas: 0 },
-        }
-      }
-    }
-
-    // Asegurar que la estructura mínima exista
-    datosJuego.palabras = datosJuego.palabras || []
-    datosJuego.estadisticas = datosJuego.estadisticas || { ganadas: 0, perdidas: 0 }
-
-    console.log("Datos finales cargados:", datosJuego)
-    renderizarLista()
-  } catch (error) {
-    console.error("Error cargando datos iniciales:", error)
-    // Usar datos por defecto en caso de error
-    datosJuego = {
-      palabras: [],
-      estadisticas: { ganadas: 0, perdidas: 0 },
-    }
-    renderizarLista()
   }
+  // Asegurar que la estructura mínima exista
+  datosJuego.palabras = datosJuego.palabras || []
+  datosJuego.estadisticas = datosJuego.estadisticas || { ganadas: 0, perdidas: 0 }
+  renderizarLista()
 }
 
 // Delegación de eventos para los botones de la lista

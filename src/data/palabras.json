@@ -35,37 +35,177 @@
     {
       "palabra": "sabalero",
       "pista": ""
+    },
+    {
+      "palabra": "salero",
+      "pista": ""
+    },
+    {
+      "palabra": "hola",
+      "pista": ""
+    },
+    {
+      "palabra": "america",
+      "pista": ""
     }
   ],
   "estadisticas": {
     "ganadas": 0,
     "perdidas": 0,
-    "partidasJugadas": 2,
-    "tiempoTotalJugado": 30,
-    "partidasPerdidas": 2,
-    "porcentajeExito": null
+    "partidasJugadas": 15,
+    "tiempoTotalJugado": 292,
+    "partidasPerdidas": 11,
+    "porcentajeExito": 20,
+    "partidasGanadas": 3
   },
   "estadisticasPorPalabra": {
     "cebra": {
+      "vecesJugada": 2,
+      "vecesGanada": 1,
+      "porcentajeExito": 50,
+      "promedioErrores": 4,
+      "tiempoPromedio": 29,
+      "totalErrores": 8,
+      "tiempoTotal": 58
+    },
+    "sabalero": {
+      "vecesJugada": 4,
+      "vecesGanada": 1,
+      "porcentajeExito": 25,
+      "promedioErrores": 6.5,
+      "tiempoPromedio": 14,
+      "totalErrores": 26,
+      "tiempoTotal": 55
+    },
+    "piedra": {
+      "vecesJugada": 4,
+      "vecesGanada": 1,
+      "porcentajeExito": 25,
+      "promedioErrores": 6.8,
+      "tiempoPromedio": 25,
+      "totalErrores": 27,
+      "tiempoTotal": 100
+    },
+    "mariposa": {
+      "vecesJugada": 3,
+      "vecesGanada": 1,
+      "porcentajeExito": 33,
+      "promedioErrores": 6.3,
+      "tiempoPromedio": 19,
+      "totalErrores": 19,
+      "tiempoTotal": 58
+    },
+    "lago": {
       "vecesJugada": 1,
       "vecesGanada": 0,
       "porcentajeExito": 0,
       "promedioErrores": 7,
-      "tiempoPromedio": 11,
+      "tiempoPromedio": 9,
       "totalErrores": 7,
-      "tiempoTotal": 11
+      "tiempoTotal": 9
     },
-    "sabalero": {
+    "salero": {
       "vecesJugada": 2,
       "vecesGanada": 0,
       "porcentajeExito": 0,
       "promedioErrores": 7,
-      "tiempoPromedio": 15,
+      "tiempoPromedio": 12,
       "totalErrores": 14,
-      "tiempoTotal": 30
+      "tiempoTotal": 23
     }
   },
   "historial": [
+    {
+      "fecha": "2025-08-22T06:12:07.113Z",
+      "palabra": "piedra",
+      "gano": false,
+      "errores": 7,
+      "tiempoJugado": 11
+    },
+    {
+      "fecha": "2025-08-22T05:08:46.546Z",
+      "palabra": "salero",
+      "gano": false,
+      "errores": 7,
+      "tiempoJugado": 10
+    },
+    {
+      "fecha": "2025-08-22T04:22:56.024Z",
+      "palabra": "piedra",
+      "gano": false,
+      "errores": 7,
+      "tiempoJugado": 9
+    },
+    {
+      "fecha": "2025-08-21T22:52:35.774Z",
+      "palabra": "sabalero",
+      "gano": true,
+      "errores": 5,
+      "tiempoJugado": 16
+    },
+    {
+      "fecha": "2025-08-21T22:47:09.978Z",
+      "palabra": "mariposa",
+      "gano": true,
+      "errores": 5,
+      "tiempoJugado": 34
+    },
+    {
+      "fecha": "2025-08-21T22:39:57.005Z",
+      "palabra": "salero",
+      "gano": false,
+      "errores": 7,
+      "tiempoJugado": 13
+    },
+    {
+      "fecha": "2025-08-21T04:15:57.376Z",
+      "palabra": "mariposa",
+      "gano": false,
+      "errores": 7,
+      "tiempoJugado": 10
+    },
+    {
+      "fecha": "2025-08-21T04:15:44.483Z",
+      "palabra": "lago",
+      "gano": false,
+      "errores": 7,
+      "tiempoJugado": 9
+    },
+    {
+      "fecha": "2025-08-21T04:12:42.978Z",
+      "palabra": "mariposa",
+      "gano": false,
+      "errores": 7,
+      "tiempoJugado": 14
+    },
+    {
+      "fecha": "2025-08-21T03:53:32.970Z",
+      "palabra": "piedra",
+      "gano": false,
+      "errores": 7,
+      "tiempoJugado": 23
+    },
+    {
+      "fecha": "2025-08-21T03:43:13.175Z",
+      "palabra": "sabalero",
+      "gano": false,
+      "errores": 7,
+      "tiempoJugado": 9
+    },
+    {
+      "fecha": "2025-08-21T01:31:54.584Z",
+      "palabra": "piedra",
+      "gano": true,
+      "errores": 6,
+      "tiempoJugado": 57
+    },
+    {
+      "fecha": "2025-08-21T01:30:56.548Z",
+      "palabra": "cebra",
+      "gano": true,
+      "errores": 1,
+      "tiempoJugado": 47
+    },
     {
       "fecha": "2025-08-21T01:12:21.012Z",
       "palabra": "sabalero",

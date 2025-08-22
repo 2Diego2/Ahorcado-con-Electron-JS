@@ -20,7 +20,7 @@ function createWindow() {
     },
   })
 
-  mainWindow.loadFile("src/index.html")
+  mainWindow.loadFile("src/menu.html")
 }
 
 function createGestorWindow() {
@@ -133,6 +133,7 @@ ipcMain.handle("abrir-gestor", () => {
 ipcMain.handle("abrir-estadisticas", () => {
   createEstadisticasWindow()
 })
+
 
 // Handler para actualizar estadísticas
 ipcMain.handle("actualizar-estadisticas", async (event, datosPartida) => {
