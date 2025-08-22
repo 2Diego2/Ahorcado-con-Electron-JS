@@ -4,6 +4,10 @@
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 Una aplicación de escritorio multiplataforma que reinventa el clásico juego del ahorcado con funcionalidades modernas y personalizables.
+![Image](https://github.com/user-attachments/assets/6d4893f7-8224-49ae-a87a-b0fce3282ac1)
+
+
+
 ## 🎯 Características
 - **Juego clásico mejorado**: Experiencia de juego fluida con interfaz moderna
 - **Multiplataforma**: Compatible con Windows, macOS y Linux
